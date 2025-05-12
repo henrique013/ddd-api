@@ -44,7 +44,8 @@ jobs:
     needs: build-and-publish
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Code checkout
+        uses: actions/checkout@v4
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.2.2
