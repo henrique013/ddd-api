@@ -3,7 +3,7 @@ import { RouteOptions } from 'fastify'
 
 export const routeOpt: RouteOptions = {
   method: 'GET',
-  url: '/system/health',
+  url: '/ddd/system/health',
   schema: {
     querystring: {
       type: 'object',

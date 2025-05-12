@@ -3,7 +3,7 @@ import { RouteOptions } from 'fastify'
 
 export const routeOpt: RouteOptions = {
   method: 'GET',
-  url: '/',
+  url: '/ddd',
   schema: {
     response: {
       200: {
