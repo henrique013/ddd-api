@@ -56,3 +56,4 @@ jobs:
             cd /home/app/projects/infra
             ./pull.sh
             ./up.sh -d
+            ./prune-img.sh -f
