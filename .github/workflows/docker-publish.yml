@@ -37,3 +37,22 @@ jobs:
         run: |
           docker push ghcr.io/${{ github.repository }}:${{ env.VERSION }}
           docker push ghcr.io/${{ github.repository }}:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build-and-publish
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.GH_PRIVATE_SSH_KEY_DEPLOY }}
+          script: |
+            cd /home/app/projects/infra
+            ./pull.sh
+            ./up.sh -d
