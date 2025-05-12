@@ -15,4 +15,3 @@ types
 Dockerfile
 eslint.config.js
 README.md
-tsconfig.json
