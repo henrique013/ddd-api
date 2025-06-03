@@ -1,4 +1,5 @@
 <!-- TODO: update this file -->
+
 # 🚀 Template de API Fastify
 
 Este é um template básico para uma API Fastify com TypeScript, configurado para desenvolvimento usando Docker.
@@ -13,7 +14,7 @@ Este é um template básico para uma API Fastify com TypeScript, configurado par
 
    ```bash
    git clone git@github.com:henrique013/ddd-api.git
-   cd tpl-fastify
+   cd ddd-api
    ```
 
 2. Configure as variáveis de ambiente:
@@ -23,20 +24,25 @@ Este é um template básico para uma API Fastify com TypeScript, configurado par
    nano .env
    ```
 
-3. Execute as migrações do banco de dados:
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+4. Execute as migrações do banco de dados:
 
    ```bash
    npm run migrate
    ```
 
-4. Inicie a aplicação:
+5. Inicie a aplicação:
 
    ```bash
-   npm install
    npm run dev
    ```
 
-5. Acesse a aplicação:
+6. Acesse a aplicação:
    - A API estará disponível em `http://localhost:${API_PORT}`
    - Você pode testar os endpoints usando a documentação abaixo
 
