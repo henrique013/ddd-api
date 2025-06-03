@@ -1,3 +1,4 @@
+<!-- TODO: update this file -->
 # 🚀 Template de API Fastify
 
 Este é um template básico para uma API Fastify com TypeScript, configurado para desenvolvimento usando Docker.
@@ -11,7 +12,7 @@ Este é um template básico para uma API Fastify com TypeScript, configurado par
 1. Clone o repositório e navegue até o diretório do projeto:
 
    ```bash
-   git clone git@github.com:henrique013/tpl-fastify.git
+   git clone git@github.com:henrique013/ddd-api.git
    cd tpl-fastify
    ```
 
