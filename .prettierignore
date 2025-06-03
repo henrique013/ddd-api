@@ -1,0 +1,3 @@
+coverage
+src/infra/orm/migrations
+tsconfig.json
