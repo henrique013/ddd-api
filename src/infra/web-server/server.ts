@@ -81,13 +81,6 @@ export class Server {
 
     // health
     fastify.route((await import('@infra/web-server/routes/health.js')).routeOpt)
-
-    // users
-    fastify.route((await import('@infra/web-server/routes/users.find-all.js')).routeOpt)
-    fastify.route((await import('@infra/web-server/routes/users.find-one.js')).routeOpt)
-    fastify.route((await import('@infra/web-server/routes/users.delete.js')).routeOpt)
-    fastify.route((await import('@infra/web-server/routes/users.update.js')).routeOpt)
-    fastify.route((await import('@infra/web-server/routes/users.create.js')).routeOpt)
   }
 
   async listen(): Promise<void> {
