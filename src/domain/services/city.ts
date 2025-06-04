@@ -16,11 +16,13 @@ export class CityService implements ICityService {
 
   async findByDddOrFail(ddd: DDD): Promise<City[]> {
     const cities = await this.citiesRepo.findByDdd(ddd)
+    console.log('cities', cities)
     if (cities.length > 0) {
       return cities
     }
 
     const externalCities = await this.citiesExternalRepo.findByDdd(ddd)
+    console.log('externalCities', externalCities)
     if (externalCities.length === 0) {
       throw new NotFoundError(`No cities found for DDD ${ddd.toString()}`)
     }

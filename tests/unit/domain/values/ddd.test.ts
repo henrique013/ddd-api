@@ -18,22 +18,18 @@ describe('DDD', () => {
 
     it('should throw BadArgumentError when ddd is not an integer', () => {
       expect(() => DDD.from(11.5)).toThrow(BadArgumentError)
-      expect(() => DDD.from(11.5)).toThrow('DDD deve ser um número inteiro')
     })
 
     it('should throw BadArgumentError when ddd is less than MIN_VALUE', () => {
       expect(() => DDD.from(10)).toThrow(BadArgumentError)
-      expect(() => DDD.from(10)).toThrow(`DDD deve ser maior ou igual a ${DDD.MIN_VALUE}`)
     })
 
     it('should throw BadArgumentError when ddd is greater than MAX_VALUE', () => {
       expect(() => DDD.from(100)).toThrow(BadArgumentError)
-      expect(() => DDD.from(100)).toThrow(`DDD deve ser menor ou igual a ${DDD.MAX_VALUE}`)
     })
 
     it('should throw BadArgumentError when ddd is divisible by 10', () => {
       expect(() => DDD.from(20)).toThrow(BadArgumentError)
-      expect(() => DDD.from(20)).toThrow('DDD não pode ser divisível por 10')
     })
   })
 

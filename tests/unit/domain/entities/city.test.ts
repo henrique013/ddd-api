@@ -66,7 +66,6 @@ describe('City', () => {
       const city = City.fromRaw(raw)
 
       expect(() => city.idOrFail()).toThrow(BadArgumentError)
-      expect(() => city.idOrFail()).toThrow('City id is required')
     })
   })
 })

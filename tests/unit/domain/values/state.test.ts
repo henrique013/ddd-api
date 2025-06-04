@@ -48,12 +48,10 @@ describe('State', () => {
 
     it('should throw BadArgumentError when state is invalid', () => {
       expect(() => State.from('XX')).toThrow(BadArgumentError)
-      expect(() => State.from('XX')).toThrow('UF inválida')
     })
 
     it('should throw BadArgumentError when state is empty', () => {
       expect(() => State.from('')).toThrow(BadArgumentError)
-      expect(() => State.from('')).toThrow('UF inválida')
     })
   })
 

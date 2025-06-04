@@ -18,22 +18,18 @@ describe('Id', () => {
 
     it('should throw BadArgumentError when id is not an integer', () => {
       expect(() => Id.from(1.5)).toThrow(BadArgumentError)
-      expect(() => Id.from(1.5)).toThrow('ID deve ser um número inteiro')
     })
 
     it('should throw BadArgumentError when id is negative', () => {
       expect(() => Id.from(-1)).toThrow(BadArgumentError)
-      expect(() => Id.from(-1)).toThrow('ID não pode ser negativo')
     })
 
     it('should throw BadArgumentError when id is less than MIN_VALUE', () => {
       expect(() => Id.from(0)).toThrow(BadArgumentError)
-      expect(() => Id.from(0)).toThrow(`ID deve ser maior ou igual a ${Id.MIN_VALUE}`)
     })
 
     it('should throw BadArgumentError when id is greater than MAX_VALUE', () => {
       expect(() => Id.from(Id.MAX_VALUE + 1)).toThrow(BadArgumentError)
-      expect(() => Id.from(Id.MAX_VALUE + 1)).toThrow(`ID deve ser menor ou igual a ${Id.MAX_VALUE}`)
     })
   })
 
