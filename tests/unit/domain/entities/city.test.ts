@@ -20,7 +20,7 @@ describe('City', () => {
       expect(city.name).toBeInstanceOf(Name)
       expect(city.state).toBeInstanceOf(State)
       expect(city.ddd).toBeInstanceOf(DDD)
-      expect(city.id).toBeUndefined()
+      expect(city.id).toBeNull()
     })
 
     it('should create instance with id when provided', () => {

@@ -13,14 +13,14 @@ export type CityRaw = {
 
 export class City {
   private constructor(
-    public id: Id | undefined,
+    public id: Id | null,
     public name: Name,
     public state: State,
     public ddd: DDD
   ) {}
 
   static fromRaw(raw: CityRaw): City {
-    const id = raw.id ? Id.from(raw.id) : undefined
+    const id = raw.id ? Id.from(raw.id) : null
     const name = Name.from(raw.name)
     const state = State.from(raw.state)
     const ddd = DDD.from(raw.ddd)
