@@ -1,7 +1,12 @@
-import { City } from '@domain/entities/city.js'
+import { City, CityRaw } from '@domain/entities/city.js'
 import { RuntimeError } from '@domain/errors/runtime.js'
 import { ICitiesExternalRepo } from '@domain/repos/cities-external.js'
 import { DDD } from '@domain/values/ddd.js'
+
+type DddRespJson = {
+  state: string
+  cities: string[]
+}
 
 export class CitiesExternalApiRepo implements ICitiesExternalRepo {
   private readonly BASE_URL = 'https://brasilapi.com.br/api/ddd/v1'
@@ -19,9 +24,21 @@ export class CitiesExternalApiRepo implements ICitiesExternalRepo {
       })
     }
 
-    const data = await response.json()
+    const data: DddRespJson = await response.json()
 
-    const cities = data.map(City.fromRaw)
+    const cities: City[] = []
+
+    for (const cityName of data.cities) {
+      const cityRaw: CityRaw = {
+        name: cityName,
+        state: data.state,
+        ddd: ddd.toNumber(),
+      }
+
+      const city = City.fromRaw(cityRaw)
+
+      cities.push(city)
+    }
 
     return cities
   }
