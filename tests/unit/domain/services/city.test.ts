@@ -23,16 +23,16 @@ describe('CityService', () => {
   describe('findByDddOrFail', () => {
     it('should return cities from local repository when found', async () => {
       const ddd = DDD.from(11)
-      const cities = [
-        City.fromRaw({ name: 'São Paulo', state: 'SP', ddd: 11 }),
-        City.fromRaw({ name: 'Guarulhos', state: 'SP', ddd: 11 }),
+      const localCities = [
+        City.fromRaw({ id: 1, name: 'São Paulo', state: 'SP', ddd: 11 }),
+        City.fromRaw({ id: 2, name: 'Guarulhos', state: 'SP', ddd: 11 }),
       ]
 
-      mockCitiesRepo.findByDdd.mockResolvedValueOnce(cities)
+      mockCitiesRepo.findByDdd.mockResolvedValueOnce(localCities)
 
       const result = await cityService.findByDddOrFail(ddd)
 
-      expect(result).toEqual(cities)
+      expect(result).toEqual(localCities)
       expect(mockCitiesRepo.findByDdd).toHaveBeenCalledWith(ddd)
       expect(mockCitiesExternalRepo.findByDdd).not.toHaveBeenCalled()
       expect(mockCitiesRepo.createMany).not.toHaveBeenCalled()
@@ -45,13 +45,18 @@ describe('CityService', () => {
         City.fromRaw({ name: 'São Paulo', state: 'SP', ddd: 11 }),
         City.fromRaw({ name: 'Guarulhos', state: 'SP', ddd: 11 }),
       ]
+      const createdCities = [
+        City.fromRaw({ id: 1, name: 'São Paulo', state: 'SP', ddd: 11 }),
+        City.fromRaw({ id: 2, name: 'Guarulhos', state: 'SP', ddd: 11 }),
+      ]
 
       mockCitiesRepo.findByDdd.mockResolvedValueOnce(localCities)
       mockCitiesExternalRepo.findByDdd.mockResolvedValueOnce(externalCities)
+      mockCitiesRepo.createMany.mockResolvedValueOnce(createdCities)
 
       const result = await cityService.findByDddOrFail(ddd)
 
-      expect(result).toEqual(externalCities)
+      expect(result).toEqual(createdCities)
       expect(mockCitiesRepo.findByDdd).toHaveBeenCalledWith(ddd)
       expect(mockCitiesExternalRepo.findByDdd).toHaveBeenCalledWith(ddd)
       expect(mockCitiesRepo.createMany).toHaveBeenCalledWith(externalCities)

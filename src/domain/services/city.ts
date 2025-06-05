@@ -27,8 +27,8 @@ export class CityService implements ICityService {
       throw new NotFoundError(`No cities found for DDD ${ddd.toString()}`)
     }
 
-    await this.citiesRepo.createMany(externalCities)
+    const newCities = await this.citiesRepo.createMany(externalCities)
 
-    return externalCities
+    return newCities
   }
 }
