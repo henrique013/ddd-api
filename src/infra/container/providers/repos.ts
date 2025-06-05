@@ -5,14 +5,14 @@ import { CitiesPgRepo } from '@infra/repos/cities.pg.js'
 import { CitiesExternalApiRepo } from '@infra/repos/cities-external.api.js'
 
 export function registerRepos(container: DependencyContainer) {
-  container.register(t.repos.ICities, {
+  container.register(t.repos.ICitiesRepo, {
     useFactory: (container) => {
       const db = container.resolve<DrizzlePg>(t.libs.DrizzlePg)
       return new CitiesPgRepo(db)
     },
   })
 
-  container.register(t.repos.ICitiesExternal, {
+  container.register(t.repos.ICitiesExternalRepo, {
     useClass: CitiesExternalApiRepo,
   })
 }
