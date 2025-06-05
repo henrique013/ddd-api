@@ -81,6 +81,9 @@ export class Server {
 
     // health
     fastify.route((await import('@infra/web-server/routes/health.js')).routeOpt)
+
+    // cities
+    fastify.route((await import('@infra/web-server/routes/cities.find-by-ddd.js')).routeOpt)
   }
 
   async listen(): Promise<void> {
