@@ -35,4 +35,13 @@ export class City {
 
     return this.id
   }
+
+  toRaw(): CityRaw {
+    return {
+      ...(this.id ? { id: this.id.toNumber() } : {}),
+      name: this.name.toString(),
+      state: this.state.toString(),
+      ddd: this.ddd.toNumber(),
+    }
+  }
 }

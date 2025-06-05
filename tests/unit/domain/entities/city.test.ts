@@ -68,4 +68,42 @@ describe('City', () => {
       expect(() => city.idOrFail()).toThrow(BadArgumentError)
     })
   })
+
+  describe('toRaw', () => {
+    it('should convert instance to raw data without id', () => {
+      const raw: CityRaw = {
+        name: 'São Paulo',
+        state: 'SP',
+        ddd: 11,
+      }
+
+      const city = City.fromRaw(raw)
+      const result = city.toRaw()
+
+      expect(result).toEqual({
+        name: 'São Paulo',
+        state: 'SP',
+        ddd: 11,
+      })
+    })
+
+    it('should convert instance to raw data with id', () => {
+      const raw: CityRaw = {
+        id: 1,
+        name: 'São Paulo',
+        state: 'SP',
+        ddd: 11,
+      }
+
+      const city = City.fromRaw(raw)
+      const result = city.toRaw()
+
+      expect(result).toEqual({
+        id: 1,
+        name: 'São Paulo',
+        state: 'SP',
+        ddd: 11,
+      })
+    })
+  })
 })
