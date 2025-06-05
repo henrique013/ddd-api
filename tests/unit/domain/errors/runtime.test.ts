@@ -1,15 +1,15 @@
 import { describe, it, expect } from 'vitest'
-import { BadArgumentError } from '@domain/errors/bad-argument.js'
+import { RuntimeError } from '@domain/errors/runtime.js'
 
-describe('BadArgumentError', () => {
+describe('RuntimeError', () => {
   describe('toHttpStatus', () => {
     it('should return correct HTTP status code and name', () => {
-      const error = new BadArgumentError('Invalid argument')
+      const error = new RuntimeError('An unexpected error occurred')
       const httpStatus = error.toHttpStatus()
 
       expect(httpStatus).toEqual({
-        code: 400,
-        name: 'Bad Request',
+        code: 500,
+        name: 'Internal Server Error',
       })
     })
   })
