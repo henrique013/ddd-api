@@ -7,7 +7,7 @@ import { NotFoundError } from '@domain/errors/not-found.js'
 describe('CityService', () => {
   const mockCitiesRepo = {
     findByDdd: vi.fn(),
-    create: vi.fn(),
+    createMany: vi.fn(),
   }
 
   const mockCitiesExternalRepo = {
@@ -35,7 +35,7 @@ describe('CityService', () => {
       expect(result).toEqual(cities)
       expect(mockCitiesRepo.findByDdd).toHaveBeenCalledWith(ddd)
       expect(mockCitiesExternalRepo.findByDdd).not.toHaveBeenCalled()
-      expect(mockCitiesRepo.create).not.toHaveBeenCalled()
+      expect(mockCitiesRepo.createMany).not.toHaveBeenCalled()
     })
 
     it('should fetch from external repository and save to local when not found locally', async () => {
@@ -54,9 +54,7 @@ describe('CityService', () => {
       expect(result).toEqual(externalCities)
       expect(mockCitiesRepo.findByDdd).toHaveBeenCalledWith(ddd)
       expect(mockCitiesExternalRepo.findByDdd).toHaveBeenCalledWith(ddd)
-      expect(mockCitiesRepo.create).toHaveBeenCalledTimes(2)
-      expect(mockCitiesRepo.create).toHaveBeenCalledWith(externalCities[0])
-      expect(mockCitiesRepo.create).toHaveBeenCalledWith(externalCities[1])
+      expect(mockCitiesRepo.createMany).toHaveBeenCalledWith(externalCities)
     })
 
     it('should throw NotFoundError when no cities are found in both repositories', async () => {
@@ -71,7 +69,7 @@ describe('CityService', () => {
 
       expect(mockCitiesRepo.findByDdd).toHaveBeenCalledWith(ddd)
       expect(mockCitiesExternalRepo.findByDdd).toHaveBeenCalledWith(ddd)
-      expect(mockCitiesRepo.create).not.toHaveBeenCalled()
+      expect(mockCitiesRepo.createMany).not.toHaveBeenCalled()
     })
   })
 })
