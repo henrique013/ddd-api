@@ -3,5 +3,5 @@ import { DDD } from '@domain/values/ddd.js'
 
 export interface ICitiesRepo {
   findByDdd(ddd: DDD): Promise<City[]>
-  createMany(cities: City[]): Promise<void>
+  createMany(cities: City[]): Promise<City[]>
 }

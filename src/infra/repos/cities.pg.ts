@@ -16,9 +16,13 @@ export class CitiesPgRepo implements ICitiesRepo {
     return cities
   }
 
-  async createMany(cities: City[]): Promise<void> {
+  async createMany(cities: City[]): Promise<City[]> {
     const values = cities.map((city) => city.toRaw())
 
-    await this.db.insert(citiesTable).values(values)
+    const result = await this.db.insert(citiesTable).values(values).returning()
+
+    const newCities = result.map(City.fromRaw)
+
+    return newCities
   }
 }
