@@ -10,14 +10,9 @@ export function registerServices(container: DependencyContainer) {
 
       const mockCitiesRepo = {
         findByDdd: vi.fn(),
-        createMany: vi.fn(),
       }
 
-      const mockCitiesExternalRepo = {
-        findByDdd: vi.fn(),
-      }
-
-      return new CityService(mockCitiesRepo, mockCitiesExternalRepo)
+      return new CityService(mockCitiesRepo)
     },
   })
 }

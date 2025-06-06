@@ -1,0 +1,18 @@
+import { DrizzleSqlite } from '@infra/orm/types.js'
+import { ICitiesRepo } from '@domain/repos/cities.js'
+import { City } from '@domain/entities/city.js'
+import { citiesTable } from '@infra/orm/schema.js'
+import { eq } from 'drizzle-orm'
+import { DDD } from '@domain/values/ddd.js'
+
+export class CitiesSqliteRepo implements ICitiesRepo {
+  constructor(private readonly db: DrizzleSqlite) {}
+
+  async findByDdd(ddd: DDD): Promise<City[]> {
+    const result = await this.db.select().from(citiesTable).where(eq(citiesTable.ddd, ddd.toNumber()))
+
+    const cities = result.map(City.fromRaw)
+
+    return cities
+  }
+}
