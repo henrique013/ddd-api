@@ -1,7 +1,7 @@
 {
   "name": "ddd-api",
   "version": "2.1.4",
-  "description": "API for the DDD project",
+  "description": "REST API for querying Brazilian cities by DDD (area code), built with Fastify and TypeScript.",
   "author": "Henrique Alves <henrique013.a@gmail.com> (https://github.com/henrique013)",
   "license": "MIT",
   "type": "module",
