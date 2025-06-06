@@ -4,8 +4,8 @@ import { env } from './src/infra/env'
 export default defineConfig({
   out: './src/infra/orm/migrations',
   schema: './src/infra/orm/schema.ts',
-  dialect: 'postgresql',
+  dialect: 'sqlite',
   dbCredentials: {
-    url: env.PG_MIGRATIONS_URL,
+    url: env.SQLITE_DB_FILE_NAME,
   },
 })

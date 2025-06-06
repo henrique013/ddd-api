@@ -1,26 +1,16 @@
 import { t } from '@infra/container/tokens.js'
 import { DependencyContainer } from 'tsyringe'
-import { Pool } from 'pg'
-import { drizzle } from 'drizzle-orm/node-postgres'
+import Database from 'better-sqlite3'
+import { drizzle } from 'drizzle-orm/better-sqlite3'
 import * as schema from '@infra/orm/schema.js'
 import { env } from '@infra/env.js'
-import { DrizzlePg } from '@infra/orm/types.js'
-
-const MAX_TIMEOUT_MS = 10_000
+import { DrizzleSqlite } from '@infra/orm/types.js'
 
 export function registerLibs(container: DependencyContainer) {
-  const pgPool = new Pool({
-    connectionString: env.PG_API_URL,
-    connectionTimeoutMillis: MAX_TIMEOUT_MS,
-  })
+  const sqlite = new Database(env.SQLITE_DB)
+  const drizzleSqlite: DrizzleSqlite = drizzle(sqlite, { schema })
 
-  const drizzlePg: DrizzlePg = drizzle(pgPool, { schema })
-
-  container.register(t.libs.PgPool, {
-    useValue: pgPool,
-  })
-
-  container.register(t.libs.DrizzlePg, {
-    useValue: drizzlePg,
+  container.register(t.libs.DrizzleSqlite, {
+    useValue: drizzleSqlite,
   })
 }

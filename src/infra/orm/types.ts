@@ -1,4 +1,4 @@
-import { NodePgDatabase } from 'drizzle-orm/node-postgres'
+import { BetterSQLite3Database } from 'drizzle-orm/better-sqlite3'
 import * as schema from '@infra/orm/schema.js'
 
-export type DrizzlePg = NodePgDatabase<typeof schema>
+export type DrizzleSqlite = BetterSQLite3Database<typeof schema>
