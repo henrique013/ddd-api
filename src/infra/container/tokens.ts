@@ -5,7 +5,6 @@ const TOKENS = {
     DrizzlePg: Symbol.for('DrizzlePg'),
   },
   repos: {
-    ICitiesExternalRepo: Symbol.for('ICitiesExternalRepo'),
     ICitiesRepo: Symbol.for('ICitiesRepo'),
   },
   services: {
