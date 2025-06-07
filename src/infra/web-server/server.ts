@@ -45,9 +45,9 @@ export class Server {
     })
 
     // Register CORS plugin with secure defaults
-    const corsOrigins = env.API_CORS_ORIGINS?.split(',') ?? []
+    const origin = env.API_CORS_ORIGINS === '*' ? true : env.API_CORS_ORIGINS.split(',')
     fastify.register(cors, {
-      origin: process.env['NODE_ENV'] === 'production' ? corsOrigins : true,
+      origin,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true,
