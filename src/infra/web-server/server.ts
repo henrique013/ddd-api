@@ -27,11 +27,10 @@ export class Server {
   }
 
   private static createFastifyInstance(debug: boolean): FastifyInstance {
-    const level = debug ? 'debug' : 'warn'
-
+    // Create Fastify instance with logger
     const fastify: FastifyInstance = Fastify({
       logger: {
-        level,
+        level: debug ? 'debug' : 'warn',
         transport: {
           target: 'pino-pretty',
           options: {
