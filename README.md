@@ -47,18 +47,63 @@ A API estará disponível em `http://localhost:${API_PORT}` (porta padrão: 3000
 
 - `GET /`: Endpoint raiz
 
-  - Resposta: `{ "message": "Hello World" }`
+  - Resposta: Lista todos os endpoints disponíveis na API
+
+  ```json
+  {
+    "message": "DDD API - Lista de Endpoints Disponíveis",
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/",
+        "description": "Lista todos os endpoints disponíveis na API"
+      },
+      {
+        "method": "GET",
+        "path": "/health",
+        "description": "Verificação de saúde da aplicação. Parâmetro opcional: ?uptime=true"
+      },
+      {
+        "method": "GET",
+        "path": "/cities/:ddd",
+        "description": "Consulta cidades por DDD. Exemplo: /cities/11"
+      }
+    ]
+  }
+  ```
 
 - `GET /health`: Verificação de saúde da aplicação
   - Parâmetro opcional: `?uptime=true` para incluir informações de uptime
-  - Resposta: `{ "message": "OK", "timestamp": "2024-03-21T12:00:00.000Z", "uptime": 123 }`
+  - Resposta:
+  ```json
+  {
+    "message": "OK",
+    "timestamp": "2024-03-21T12:00:00.000Z",
+    "uptime": 123
+  }
+  ```
 
 ### Consulta de Cidades por DDD
 
 - `GET /cities/:ddd`: Consulta cidades por DDD
   - Exemplo: `GET /cities/11` retorna todas as cidades com DDD 11
-  - Resposta: Array de cidades com `id`, `name`, `state` e `ddd`
-  - Erro 404: Retornado quando nenhuma cidade é encontrada para o DDD informado
+  - Resposta:
+  ```json
+  [
+    {
+      "id": 1,
+      "name": "São Paulo",
+      "state": "SP",
+      "ddd": "11"
+    },
+    {
+      "id": 2,
+      "name": "Guarulhos",
+      "state": "SP",
+      "ddd": "11"
+    }
+  ]
+  ```
 
 ## 🔑 Comandos Disponíveis
 
