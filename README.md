@@ -2,6 +2,10 @@
 
 API REST para consulta de cidades brasileiras por DDD (Discagem Direta à Distância), construída com Fastify e TypeScript.
 
+## 🌐 Acesso Online
+
+Você pode acessar a versão online do projeto [aqui](https://ddd-api.solidsistemas.com/).
+
 ## 📋 Pré-requisitos
 
 - Node.js 20+
