@@ -4,46 +4,89 @@ API REST para consulta de cidades brasileiras por DDD (Discagem Direta à Distâ
 
 ## 🌐 Acesso Online
 
-Você pode acessar a versão online do projeto [aqui](https://ddd-api.solidsistemas.com/).
+Acesse a versão online do projeto [aqui](https://ddd-api.solidsistemas.com/).
+
+## 🔎 Sobre o Projeto
+
+Esta API foi desenvolvida para fornecer informações sobre cidades brasileiras através de seus DDDs (Discagem Direta à Distância). Ela é o backend da aplicação [DDD](https://github.com/henrique013/ddd), que permite aos usuários consultarem facilmente quais cidades pertencem a cada código de área.
+
+## ✨ Recursos e Diferenciais
+
+Principais recursos e diferenciais do projeto:
+
+- Consulta de cidades por DDD
+- Validação automática de DDDs válidos
+- Suporte a todos os estados brasileiros
+- Respostas em formato JSON
+- Documentação clara e objetiva dos endpoints
+
+## 🛠️ Tecnologias e Bibliotecas
+
+Principais tecnologias e bibliotecas utilizadas:
+
+- [Fastify](https://www.fastify.io/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Zod](https://zod.dev/)
+- [TSX](https://tsx.is/)
+- [Tsyringe](https://github.com/microsoft/tsyringe)
+- [SQLite](https://www.sqlite.org/index.html)
+- [Drizzle ORM](https://orm.drizzle.team/)
+- [Vitest](https://vitest.dev/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Lefthook](https://github.com/evilmartians/lefthook)
+- [Sentry](https://sentry.io/)
+- [Docker](https://www.docker.com/)
 
 ## 📋 Pré-requisitos
 
-- Node.js 20+
-- SQLite3
+Para executar o projeto, você precisa ter instalado:
 
-## ⚙️ Instalação e Execução
+- [Node.js 20+](https://nodejs.org/)
+- [Git](https://git-scm.com/)
 
-1. Clone o repositório e navegue até o diretório do projeto:
+## ⚙️ Instalação
+
+Siga estes passos para configurar o ambiente:
+
+1. Clone o repositório
 
    ```bash
    git clone git@github.com:henrique013/ddd-api.git
+   ```
+
+2. Navegue até o diretório do projeto
+
+   ```bash
    cd ddd-api
    ```
 
-2. Configure as variáveis de ambiente:
-
-   ```bash
-   cp .env.example .env
-   nano .env
-   ```
-
-3. Instale as dependências:
-
+3. Instale as dependências
    ```bash
    npm install
    ```
 
-4. Inicie a aplicação:
+## 🔐 Configuração de Ambiente
 
-   ```bash
-   npm run dev
-   ```
+Para que a aplicação funcione corretamente, configure as variáveis de ambiente:
+
+```bash
+cp .env.example .env
+```
+
+## ▶️ Executando o Projeto
+
+Para iniciar o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+O projeto estará disponível em [http://localhost:3000](http://localhost:3000)
 
 ## 🔌 Endpoints
 
-A API estará disponível em `http://localhost:${API_PORT}` (porta padrão: 3000).
-
-### Endpoints do Sistema
+Endpoints disponíveis na API:
 
 - `GET /`: Endpoint raiz
 
@@ -83,8 +126,6 @@ A API estará disponível em `http://localhost:${API_PORT}` (porta padrão: 3000
   }
   ```
 
-### Consulta de Cidades por DDD
-
 - `GET /cities/:ddd`: Consulta cidades por DDD
   - Exemplo: `GET /cities/11` retorna todas as cidades com DDD 11
   - Resposta:
@@ -105,46 +146,51 @@ A API estará disponível em `http://localhost:${API_PORT}` (porta padrão: 3000
   ]
   ```
 
-## 🔑 Comandos Disponíveis
+## ⌨️ Comandos Disponíveis
 
-Dentro do `package.json` você encontra os seguintes comandos:
+Comandos principais do projeto:
 
-- `npm run dev`: Inicia a aplicação em modo de desenvolvimento
-- `npm start`: Inicia a aplicação em modo de produção
-  - Importante: Em produção, a aplicação espera que as variáveis de ambiente já existam no sistema operacional, portanto, não é necessário configurar o arquivo `.env`
+- `npm run dev`: Inicia o servidor de desenvolvimento
+- `npm start`: Inicia o servidor em modo de produção _(requer variáveis de ambiente configuradas no sistema operacional)_
 - `npm run tag -- <patch|minor|major>`: Cria uma tag para o projeto seguindo o padrão SemVer (MAJOR.MINOR.PATCH)
-  - Exemplo: `npm run tag -- patch` (para incrementar a versão de patch)
-  - Exemplo: `npm run tag -- minor` (para incrementar a versão minor)
-  - Exemplo: `npm run tag -- major` (para incrementar a versão major)
-  - Dica: Se quiser resetar a versão para 1.0.0, você pode editar manualmente o campo "version" no package.json
-- `npm run compile`: Verifica erros de compilação TypeScript sem gerar arquivos
-- `npm run lint`: Executa o ESLint para verificar a qualidade do código
+  - Dica: Para resetar a versão para 1.0.0, edite manualmente o campo "version" no package.json
+- `npm run compile`: Verifica se o código compila sem erros
+- `npm run lint`: Executa a verificação de linting no código
 - `npm run format`: Formata o código usando o Prettier
 - `npm test`: Executa todos os testes uma vez
-- `npm run coverage`: Executa os testes e gera um relatório de cobertura de código
-- `npm run postinstall`: Configura o lefthook para executar os hooks de commit e push
-  - Este comando é executado automaticamente após a instalação das dependências do projeto
+- `npm run coverage`: Executa os testes e gera relatório de cobertura
+- `npm run postinstall`: Executa scripts de pós-instalação
 
 ## 📁 Estrutura do Projeto
 
+Principais diretórios e arquivos:
+
 ```
-src/
-├── domain/           # Regras de negócio e entidades
-│   ├── entities/     # Entidades (City)
-│   ├── errors/       # Erros personalizados
-│   ├── repos/        # Interfaces dos repositórios
-│   ├── services/     # Serviços de domínio
-│   ├── tests/        # Testes
-│   └── values/       # Value Objects (DDD, State, etc)
-└── infra/            # Infraestrutura
-    ├── container/    # Injeção de dependências
-    ├── orm/          # Configuração do ORM
-    ├── repos/        # Implementações dos repositórios
-    ├── scripts/      # Scripts de inicialização e configuração
-    └── web-server/   # Configuração do servidor web
+ddd-api/
+├── src/
+│   ├── domain/           # Regras de negócio e entidades
+│   │   ├── entities/     # Entidades
+│   │   ├── errors/       # Erros personalizados
+│   │   ├── repos/        # Interfaces dos repositórios
+│   │   ├── services/     # Serviços de domínio
+│   │   ├── tests/        # Testes
+│   │   ├── values/       # Value Objects
+│   │   ├── errors.ts     # Componentes comuns entre os erros personalizados
+│   │   └── values.ts     # Componentes comuns entre os value objects
+│   └── infra/            # Infraestrutura
+│       ├── container/    # Injeção de dependências
+│       ├── orm/          # Configuração do ORM
+│       ├── repos/        # Implementações dos repositórios
+│       ├── scripts/      # Scripts de inicialização e configuração
+│       ├── web-server/   # Configuração do servidor web
+│       ├── env.ts        # Configuração do ambiente
+│       └── main.ts       # Ponto de entrada principal
+└── ...                   # Arquivos de configuração
 ```
 
 ## 📧 Contato
+
+Entre em contato através das redes sociais:
 
 - LinkedIn: [Henrique Alves](https://www.linkedin.com/in/henrique-alves-a44b99135)
 - GitHub: [henrique013](https://github.com/henrique013)
