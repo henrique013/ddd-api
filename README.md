@@ -107,14 +107,23 @@ A API estará disponível em `http://localhost:${API_PORT}` (porta padrão: 3000
 
 ## 🔑 Comandos Disponíveis
 
+Dentro do `package.json` você encontra os seguintes comandos:
+
 - `npm run dev`: Inicia a aplicação em modo de desenvolvimento
 - `npm start`: Inicia a aplicação em modo de produção
-- `npm run compile`: Verifica erros de compilação TypeScript
-- `npm run lint`: Executa o ESLint
-- `npm run format`: Formata o código com Prettier
-- `npm test`: Executa os testes
-- `npm run coverage`: Gera relatório de cobertura de código
-- `npm run tag -- <patch|minor|major>`: Cria tag seguindo SemVer
+  - Importante: Em produção, a aplicação espera que as variáveis de ambiente já existam no sistema operacional, portanto, não é necessário configurar o arquivo `.env`
+- `npm run tag -- <patch|minor|major>`: Cria uma tag para o projeto seguindo o padrão SemVer (MAJOR.MINOR.PATCH)
+  - Exemplo: `npm run tag -- patch` (para incrementar a versão de patch)
+  - Exemplo: `npm run tag -- minor` (para incrementar a versão minor)
+  - Exemplo: `npm run tag -- major` (para incrementar a versão major)
+  - Dica: Se quiser resetar a versão para 1.0.0, você pode editar manualmente o campo "version" no package.json
+- `npm run compile`: Verifica erros de compilação TypeScript sem gerar arquivos
+- `npm run lint`: Executa o ESLint para verificar a qualidade do código
+- `npm run format`: Formata o código usando o Prettier
+- `npm test`: Executa todos os testes uma vez
+- `npm run coverage`: Executa os testes e gera um relatório de cobertura de código
+- `npm run postinstall`: Configura o lefthook para executar os hooks de commit e push
+  - Este comando é executado automaticamente após a instalação das dependências do projeto
 
 ## 📁 Estrutura do Projeto
 
