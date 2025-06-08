@@ -39,7 +39,7 @@ Você pode acessar a versão online do projeto [aqui](https://ddd-api.solidsiste
    npm run dev
    ```
 
-## 🌐 Endpoints
+## 🔌 Endpoints
 
 A API estará disponível em `http://localhost:${API_PORT}` (porta padrão: 3000).
 
