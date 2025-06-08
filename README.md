@@ -116,8 +116,10 @@ Endpoints disponíveis na API:
   ```
 
 - `GET /health`: Verificação de saúde da aplicação
+
   - Parâmetro opcional: `?uptime=true` para incluir informações de uptime
   - Resposta:
+
   ```json
   {
     "message": "OK",
@@ -167,7 +169,7 @@ Principais diretórios e arquivos:
 
 ```
 ddd-api/
-├── src/
+├── src/                  # Código fonte
 │   ├── domain/           # Regras de negócio e entidades
 │   │   ├── entities/     # Entidades
 │   │   ├── errors/       # Erros personalizados
