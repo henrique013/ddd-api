@@ -29,7 +29,6 @@ Principais tecnologias e bibliotecas utilizadas:
 - [Zod](https://zod.dev/)
 - [TSX](https://tsx.is/)
 - [Tsyringe](https://github.com/microsoft/tsyringe)
-- [SQLite](https://www.sqlite.org/index.html)
 - [Drizzle ORM](https://orm.drizzle.team/)
 - [Vitest](https://vitest.dev/)
 - [ESLint](https://eslint.org/)
@@ -37,6 +36,7 @@ Principais tecnologias e bibliotecas utilizadas:
 - [Lefthook](https://github.com/evilmartians/lefthook)
 - [Sentry](https://sentry.io/)
 - [Docker](https://www.docker.com/)
+- [SQLite](https://www.sqlite.org/index.html)
 
 ## 📋 Pré-requisitos
 
