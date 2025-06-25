@@ -19,6 +19,7 @@ Principais recursos e diferenciais do projeto:
 - Suporte a todos os estados brasileiros
 - Respostas em formato JSON
 - Documentação clara e objetiva dos endpoints
+- Testes unitários e de integração
 
 ## 🛠️ Tecnologias e Bibliotecas
 
