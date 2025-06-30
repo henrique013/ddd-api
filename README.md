@@ -20,6 +20,7 @@ Principais recursos e diferenciais do projeto:
 - Respostas em formato JSON
 - Documentação clara e objetiva dos endpoints
 - Testes unitários e de integração
+- Rate limiting para proteção contra abusos
 
 ## 🛠️ Tecnologias e Bibliotecas
 
