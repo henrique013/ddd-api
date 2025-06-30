@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { dirname, resolve } from 'path'
+import { dirname, resolve, basename } from 'path'
 import { z } from 'zod'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -13,11 +13,16 @@ const envSchema = z.object({
 })
 
 /**
+ * The root directory of the project.
+ */
+export const ROOT_DIR = resolve(__dirname, '../../')
+
+/**
+ * The name of the application.
+ */
+export const APP_NAME = basename(ROOT_DIR)
+
+/**
  * The environment variables parsed from the process.env.
  */
 export const env = envSchema.parse(process.env)
-
-/**
- * The root directory of the project.
- */
-export const rootDir = resolve(__dirname, '../../')
