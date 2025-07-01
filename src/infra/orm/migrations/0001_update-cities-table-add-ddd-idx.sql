@@ -1,0 +1,1 @@
+CREATE INDEX "cities_ddd_idx" ON "cities" USING btree ("ddd");

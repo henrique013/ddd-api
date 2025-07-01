@@ -1,12 +1,12 @@
-import { DrizzleSqlite } from '@infra/orm/types.js'
+import { DrizzlePg } from '@infra/orm/types.js'
 import { ICitiesRepo } from '@domain/repos/cities.js'
 import { City } from '@domain/entities/city.js'
 import { citiesTable } from '@infra/orm/schema.js'
 import { asc, eq } from 'drizzle-orm'
 import { DDD } from '@domain/values/ddd.js'
 
-export class CitiesSqliteRepo implements ICitiesRepo {
-  constructor(private readonly db: DrizzleSqlite) {}
+export class CitiesPgRepo implements ICitiesRepo {
+  constructor(private readonly db: DrizzlePg) {}
 
   async findByDdd(ddd: DDD): Promise<City[]> {
     const result = await this.db

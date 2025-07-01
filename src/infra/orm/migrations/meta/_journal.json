@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1751392929152,
+      "tag": "0000_create-cities-table",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1751393725227,
+      "tag": "0001_update-cities-table-add-ddd-idx",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1751395973995,
+      "tag": "0002_seed-cities-table",
+      "breakpoints": true
+    }
+  ]
+}

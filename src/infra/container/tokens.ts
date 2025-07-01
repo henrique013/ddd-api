@@ -1,6 +1,6 @@
 const TOKENS = {
   libs: {
-    DrizzleSqlite: Symbol.for('DrizzleSqlite'),
+    DrizzlePg: Symbol.for('DrizzleSqlite'),
   },
   repos: {
     ICitiesRepo: Symbol.for('ICitiesRepo'),

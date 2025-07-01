@@ -8,6 +8,8 @@ const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production']),
   API_PORT: z.coerce.number().min(1024).max(49151),
   API_DEBUG: z.enum(['true', 'false']).transform((val) => val === 'true'),
+  PG_API_URL: z.string().url(),
+  PG_MIGRATIONS_URL: z.string().url(),
   API_CORS_ORIGINS: z.string().min(1),
   SENTRY_DSN: z.string().url().optional(),
 })

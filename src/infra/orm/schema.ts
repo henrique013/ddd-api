@@ -1,8 +1,12 @@
-import { text, integer, sqliteTable } from 'drizzle-orm/sqlite-core'
+import { index, integer, pgTable, varchar } from 'drizzle-orm/pg-core'
 
-export const citiesTable = sqliteTable('cities', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
-  name: text('name', { length: 255 }).notNull(),
-  state: text('state', { length: 2 }).notNull(),
-  ddd: integer('ddd').notNull(),
-})
+export const citiesTable = pgTable(
+  'cities',
+  {
+    id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
+    name: varchar('name', { length: 255 }).notNull(),
+    state: varchar('state', { length: 2 }).notNull(),
+    ddd: integer('ddd').notNull(),
+  },
+  (table) => [index('cities_ddd_idx').on(table.ddd)]
+)
