@@ -10,3 +10,8 @@ export const citiesTable = pgTable(
   },
   (table) => [index('cities_ddd_idx').on(table.ddd)]
 )
+
+export const searchCountersTable = pgTable('search_counters', {
+  ddd: integer('ddd').primaryKey(),
+  counter: integer('counter').notNull().default(0),
+})
