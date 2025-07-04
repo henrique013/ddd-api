@@ -4,9 +4,13 @@ import { SearchCounter } from '@domain/entities/search-counter.js'
 import { searchCountersTable } from '@infra/orm/schema.js'
 import { eq } from 'drizzle-orm'
 import { DDD } from '@domain/values/ddd.js'
+import { Publisher } from 'rabbitmq-client'
 
 export class SearchCountersPgRepo implements ISearchCountersRepo {
-  constructor(private readonly db: DrizzlePg) {}
+  constructor(
+    private readonly db: DrizzlePg,
+    private readonly pub: Publisher
+  ) {}
 
   async findByDdd(ddd: DDD): Promise<SearchCounter | null> {
     const result = await this.db
@@ -35,5 +39,7 @@ export class SearchCountersPgRepo implements ISearchCountersRepo {
           counter: raw.counter,
         },
       })
+
+    await this.pub.send('search_counter.updated', { ddd: raw.ddd })
   }
 }
