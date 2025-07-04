@@ -3,6 +3,7 @@ import { t } from '@infra/container/tokens.js'
 import { RouteOptions } from 'fastify'
 import { ICityService } from '@domain/services/city.js'
 import { DDD } from '@domain/values/ddd.js'
+import { ISearchCounterService } from '@domain/services/search-counter.js'
 
 export const routeOpt: RouteOptions = {
   method: 'GET',
@@ -33,11 +34,14 @@ export const routeOpt: RouteOptions = {
   },
   handler: async function (request, reply) {
     const params = request.params as { ddd: number }
-    const service = container.resolve<ICityService>(t.services.ICityService)
+    const cityService = container.resolve<ICityService>(t.services.ICityService)
+    const searchCounterService = container.resolve<ISearchCounterService>(t.services.ISearchCounterService)
 
     const ddd = DDD.from(params.ddd)
 
-    const cities = await service.findByDddOrFail(ddd)
+    const cities = await cityService.findByDddOrFail(ddd)
+
+    await searchCounterService.increment(ddd)
 
     const json = cities.map((city) => city.toRaw())
 

@@ -4,9 +4,11 @@ const TOKENS = {
   },
   repos: {
     ICitiesRepo: Symbol.for('ICitiesRepo'),
+    ISearchCountersRepo: Symbol.for('ISearchCountersRepo'),
   },
   services: {
     ICityService: Symbol.for('ICityService'),
+    ISearchCounterService: Symbol.for('ISearchCounterService'),
   },
 }
 
