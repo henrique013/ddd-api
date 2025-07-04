@@ -33,6 +33,7 @@
     "fastify": "^5.3.0",
     "pg": "^8.16.3",
     "pino-pretty": "^13.0.0",
+    "rabbitmq-client": "^5.0.4",
     "reflect-metadata": "^0.2.2",
     "tsx": "^4.19.4",
     "tsyringe": "^4.10.0",
