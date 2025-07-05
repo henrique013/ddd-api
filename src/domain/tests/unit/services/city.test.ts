@@ -3,6 +3,7 @@ import { CityService } from '@domain/services/city.js'
 import { City } from '@domain/entities/city.js'
 import { DDD } from '@domain/values/ddd.js'
 import { NotFoundError } from '@domain/errors/not-found.js'
+import { CacheFakeProvider } from '@infra/providers/cache.fake.js'
 
 describe('CityService', () => {
   describe('findByDddOrFail', () => {
@@ -16,7 +17,9 @@ describe('CityService', () => {
         findByDdd: vi.fn().mockResolvedValue(mockCities),
       }
 
-      const cityService = new CityService(mockCitiesRepo)
+      const cacheProvider = new CacheFakeProvider()
+
+      const cityService = new CityService(mockCitiesRepo, cacheProvider)
       const ddd = DDD.from(11)
       const result = await cityService.findByDddOrFail(ddd)
 
@@ -29,7 +32,9 @@ describe('CityService', () => {
         findByDdd: vi.fn().mockResolvedValue([]),
       }
 
-      const cityService = new CityService(mockCitiesRepo)
+      const cacheProvider = new CacheFakeProvider()
+
+      const cityService = new CityService(mockCitiesRepo, cacheProvider)
       const ddd = DDD.from(11)
 
       await expect(cityService.findByDddOrFail(ddd)).rejects.toThrow(NotFoundError)

@@ -3,6 +3,9 @@ const TOKENS = {
     DrizzlePg: Symbol.for('DrizzleSqlite'),
     RabbitMQPublisher: Symbol.for('RabbitMQPublisher'),
   },
+  providers: {
+    ICacheProvider: Symbol.for('ICacheProvider'),
+  },
   repos: {
     ICitiesRepo: Symbol.for('ICitiesRepo'),
     ISearchCountersRepo: Symbol.for('ISearchCountersRepo'),

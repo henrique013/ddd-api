@@ -4,12 +4,14 @@ import { CityService } from '@domain/services/city.js'
 import { ICitiesRepo } from '@domain/repos/cities.js'
 import { ISearchCountersRepo } from '@domain/repos/search-counters.js'
 import { SearchCounterService } from '@domain/services/search-counter.js'
+import { ICacheProvider } from '@domain/providers/cache.js'
 
 export function registerServices(container: DependencyContainer) {
   container.register(t.services.ICityService, {
     useFactory: () => {
       const citiesRepo = container.resolve<ICitiesRepo>(t.repos.ICitiesRepo)
-      return new CityService(citiesRepo)
+      const cache = container.resolve<ICacheProvider>(t.providers.ICacheProvider)
+      return new CityService(citiesRepo, cache)
     },
   })
 
