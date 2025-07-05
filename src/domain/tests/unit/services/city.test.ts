@@ -27,6 +27,34 @@ describe('CityService', () => {
       expect(result).toEqual(mockCities)
     })
 
+    it('should return cities from cache when available', async () => {
+      const mockCities = [
+        City.fromRaw({ name: 'São Paulo', state: 'SP', ddd: 11 }),
+        City.fromRaw({ name: 'Campinas', state: 'SP', ddd: 11 }),
+      ]
+
+      const mockCitiesRepo = {
+        findByDdd: vi.fn().mockResolvedValue(mockCities),
+      }
+
+      const cacheProvider = new CacheFakeProvider()
+
+      const cityService = new CityService(mockCitiesRepo, cacheProvider)
+      const ddd = DDD.from(11)
+
+      // First call to populate cache
+      await cityService.findByDddOrFail(ddd)
+
+      // Reset mock to verify it won't be called again
+      mockCitiesRepo.findByDdd.mockClear()
+
+      // Second call should return from cache
+      const result = await cityService.findByDddOrFail(ddd)
+
+      expect(mockCitiesRepo.findByDdd).not.toHaveBeenCalled()
+      expect(result).toEqual(mockCities)
+    })
+
     it('should throw NotFoundError when no cities are found', async () => {
       const mockCitiesRepo = {
         findByDdd: vi.fn().mockResolvedValue([]),
