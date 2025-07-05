@@ -7,12 +7,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      exclude: [
-        './node_modules/**',
-        './*.{ts,js}',
-        './src/infra/{container,orm,repos,scripts,web-server}/**',
-        './src/infra/*.ts',
-      ],
+      include: ['src/domain/**/*.ts', 'src/infra/**/*.fake.ts'],
     },
     workspace: [
       {
