@@ -4,11 +4,7 @@ import { DDD } from '@domain/values/ddd.js'
 import { NotFoundError } from '@domain/errors/not-found.js'
 import { ICacheProvider } from '@domain/providers/cache.js'
 
-export interface ICityService {
-  findByDddOrFail(ddd: DDD): Promise<City[]>
-}
-
-export class CityService implements ICityService {
+export class CityService {
   public readonly CACHE_TTL_SECONDS = 60 * 60 * 24 // 1 day
 
   constructor(

@@ -12,7 +12,7 @@ const TOKENS = {
     ISearchCountersRepo: Symbol.for('ISearchCountersRepo'),
   },
   services: {
-    ICityService: Symbol.for('ICityService'),
+    CityService: Symbol.for('CityService'),
     ISearchCounterService: Symbol.for('ISearchCounterService'),
   },
 }

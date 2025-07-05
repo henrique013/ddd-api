@@ -1,7 +1,7 @@
 import { container } from '@infra/container/container.js'
 import { t } from '@infra/container/tokens.js'
 import { RouteOptions } from 'fastify'
-import { ICityService } from '@domain/services/city.js'
+import { CityService } from '@domain/services/city.js'
 import { DDD } from '@domain/values/ddd.js'
 import { ISearchCounterService } from '@domain/services/search-counter.js'
 
@@ -34,7 +34,7 @@ export const routeOpt: RouteOptions = {
   },
   handler: async function (request, reply) {
     const params = request.params as { ddd: number }
-    const cityService = container.resolve<ICityService>(t.services.ICityService)
+    const cityService = container.resolve<CityService>(t.services.CityService)
     const searchCounterService = container.resolve<ISearchCounterService>(t.services.ISearchCounterService)
 
     const ddd = DDD.from(params.ddd)

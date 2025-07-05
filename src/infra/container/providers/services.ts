@@ -7,7 +7,7 @@ import { SearchCounterService } from '@domain/services/search-counter.js'
 import { ICacheProvider } from '@domain/providers/cache.js'
 
 export function registerServices(container: DependencyContainer) {
-  container.register(t.services.ICityService, {
+  container.register(t.services.CityService, {
     useFactory: () => {
       const citiesRepo = container.resolve<ICitiesRepo>(t.repos.ICitiesRepo)
       const cache = container.resolve<ICacheProvider>(t.providers.ICacheProvider)
