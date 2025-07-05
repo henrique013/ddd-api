@@ -15,7 +15,7 @@ export function registerServices(container: DependencyContainer) {
     },
   })
 
-  container.register(t.services.ISearchCounterService, {
+  container.register(t.services.SearchCounterService, {
     useFactory: () => {
       const searchCountersRepo = container.resolve<ISearchCountersRepo>(t.repos.ISearchCountersRepo)
       return new SearchCounterService(searchCountersRepo)

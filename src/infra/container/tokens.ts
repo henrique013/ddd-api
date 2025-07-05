@@ -13,7 +13,7 @@ const TOKENS = {
   },
   services: {
     CityService: Symbol.for('CityService'),
-    ISearchCounterService: Symbol.for('ISearchCounterService'),
+    SearchCounterService: Symbol.for('SearchCounterService'),
   },
 }
 

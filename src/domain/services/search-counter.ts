@@ -2,11 +2,7 @@ import { SearchCounter } from '@domain/entities/search-counter.js'
 import { ISearchCountersRepo } from '@domain/repos/search-counters.js'
 import { DDD } from '@domain/values/ddd.js'
 
-export interface ISearchCounterService {
-  increment(ddd: DDD): Promise<void>
-}
-
-export class SearchCounterService implements ISearchCounterService {
+export class SearchCounterService {
   constructor(private readonly searchCountersRepo: ISearchCountersRepo) {}
 
   async increment(ddd: DDD): Promise<void> {
