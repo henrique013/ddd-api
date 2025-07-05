@@ -6,13 +6,19 @@ import { DrizzlePg } from '@infra/orm/types.js'
 import { env } from '@infra/env.js'
 import { Pool } from 'pg'
 import { Connection, Publisher } from 'rabbitmq-client'
+import { Redis } from 'ioredis'
 
 const MAX_TIMEOUT_MS = 5_000
 
 export async function registerLibs(container: DependencyContainer) {
+  const redis = connectToRedis()
   const drizzlePg = connectToPg()
   const rabbit = await connectToRabbitMQ()
   const pub = createRabbitMQPublisher(rabbit)
+
+  container.register(t.libs.Redis, {
+    useValue: redis,
+  })
 
   container.register(t.libs.DrizzlePg, {
     useValue: drizzlePg,
@@ -21,6 +27,15 @@ export async function registerLibs(container: DependencyContainer) {
   container.register(t.libs.RabbitMQPublisher, {
     useValue: pub,
   })
+}
+
+function connectToRedis(): Redis {
+  const redis = new Redis(env.REDIS_URL, {
+    connectTimeout: MAX_TIMEOUT_MS,
+    commandTimeout: MAX_TIMEOUT_MS,
+  })
+
+  return redis
 }
 
 function connectToPg(): DrizzlePg {

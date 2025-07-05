@@ -1,7 +1,7 @@
 import { ICacheProvider } from '@domain/providers/cache.js'
 
 export class CacheFakeProvider implements ICacheProvider {
-  private cache: Map<string, { value: unknown; expiresAt: number }> = new Map()
+  private readonly cache: Map<string, { value: unknown; expiresAt: number }> = new Map()
 
   async get<T>(key: string): Promise<T | null> {
     const item = this.cache.get(key)
@@ -16,8 +16,8 @@ export class CacheFakeProvider implements ICacheProvider {
     return item.value as T
   }
 
-  async set<T>(key: string, value: T, ttlSeconds: number): Promise<void> {
-    const expiresAt = Date.now() + ttlSeconds * 1000
+  async set<T>(key: string, value: T, ttlSec: number): Promise<void> {
+    const expiresAt = Date.now() + ttlSec * 1000
 
     this.cache.set(key, { value, expiresAt })
   }

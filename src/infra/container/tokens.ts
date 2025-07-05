@@ -1,5 +1,6 @@
 const TOKENS = {
   libs: {
+    Redis: Symbol.for('Redis'),
     DrizzlePg: Symbol.for('DrizzleSqlite'),
     RabbitMQPublisher: Symbol.for('RabbitMQPublisher'),
   },
