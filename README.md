@@ -38,7 +38,7 @@ Principais tecnologias e bibliotecas utilizadas:
 - [Lefthook](https://github.com/evilmartians/lefthook)
 - [Sentry](https://sentry.io/)
 - [Docker](https://www.docker.com/)
-- [SQLite](https://www.sqlite.org/index.html)
+- [RabbitMQ](https://www.rabbitmq.com/)
 
 ## 📋 Pré-requisitos
 
