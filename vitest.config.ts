@@ -23,6 +23,19 @@ export default defineConfig({
           },
         },
       },
+      {
+        test: {
+          name: 'infra:unit',
+          environment: 'node',
+          include: ['src/infra/tests/unit/**/*.test.ts'],
+          globals: true,
+          testTimeout: 10000,
+          alias: {
+            '@domain': resolve(__dirname, './src/domain'),
+            '@infra': resolve(__dirname, './src/infra'),
+          },
+        },
+      },
     ],
   },
 })
