@@ -3,7 +3,6 @@ import { ICitiesRepo } from '@domain/repos/cities.js'
 import { DDD } from '@domain/values/ddd.js'
 import { NotFoundError } from '@domain/errors/not-found.js'
 import { ICacheProvider } from '@domain/providers/cache.js'
-import { APP_NAME } from '@infra/env.js'
 
 export interface ICityService {
   findByDddOrFail(ddd: DDD): Promise<City[]>
@@ -18,7 +17,7 @@ export class CityService implements ICityService {
   ) {}
 
   async findByDddOrFail(ddd: DDD): Promise<City[]> {
-    const cacheKey = `${APP_NAME}:cities_by_ddd:${ddd.toString()}`
+    const cacheKey = `cities_by_ddd:${ddd.toString()}`
 
     // Try to get from cache first
     const cachedCities = await this.cache.get<CityRaw[]>(cacheKey)
