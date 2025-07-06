@@ -93,7 +93,6 @@ O projeto estará disponível em [http://localhost:3000](http://localhost:3000)
 Endpoints disponíveis na API:
 
 - `GET /`: Endpoint raiz
-
   - Resposta: Lista todos os endpoints disponíveis na API
 
   ```json
@@ -120,7 +119,6 @@ Endpoints disponíveis na API:
   ```
 
 - `GET /health`: Verificação de saúde da aplicação
-
   - Parâmetro opcional: `?uptime=true` para incluir informações de uptime
   - Resposta:
 
