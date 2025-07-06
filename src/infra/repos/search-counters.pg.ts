@@ -40,6 +40,9 @@ export class SearchCountersPgRepo implements ISearchCountersRepo {
         },
       })
 
-    await this.pub.send('search_counter.updated', { ddd: raw.ddd })
+    await this.pub.send('search_counter.updated', {
+      ddd: raw.ddd,
+      counter: raw.counter,
+    })
   }
 }
