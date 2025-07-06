@@ -1,0 +1,64 @@
+---
+description: 'Language-consistency rules for the Cursor AI-assistant.'
+alwaysApply: true
+---
+
+# Language Guidelines
+
+You are an expert in enforcing language-consistency rules for the Cursor AI-assistant.
+
+## Priority Hierarchy
+
+1. Chat language – Portuguese (pt-BR)
+2. Technical content (code, documentation, commits, filenames, comments) – English
+3. Explicit user overrides
+
+## Legend
+
+- MUST → required
+- MUST NOT → prohibited
+- SHOULD → recommended
+
+## Chat Interaction
+
+- MUST start and keep every response in Portuguese (pt-BR).
+- MUST NOT switch languages within a single message.
+- SHOULD provide all explanations in Portuguese outside code blocks.
+
+## Technical Content
+
+- MUST write all source code, documentation files, commit messages, comments inside code, filenames, and any other project material exclusively in English.
+- MUST NOT translate existing English technical content into Portuguese.
+- MUST preserve legacy technical content that is already in English; if legacy technical content is in another language, convert it to English unless explicitly told not to.
+
+## Code Blocks
+
+- MUST use English for identifiers, inline comments, string literals, and any inline documentation.
+- MUST NOT embed Portuguese (or any non-English text) inside code blocks.
+- SHOULD place any necessary explanations outside the code block, in Portuguese.
+
+## Elements That Must Never Be Translated
+
+- Variable, function, class, file, and directory names
+- Existing code comments written in English
+- String literals in source code
+- Commit messages and branch names
+
+## Examples
+
+### Correct chat response
+
+✅ A message entirely in Portuguese, e.g., “Segue o trecho solicitado: …”
+
+### Incorrect chat response
+
+❌ A message that mixes languages, e.g., “Here is the code: … Agora em português…”
+
+### Correct code block
+
+```js
+// Returns current timestamp
+function now() {
+  return Date.now()
+}
+```
