@@ -31,7 +31,7 @@ export enum StateEnum {
   TO = 'TO',
 }
 
-const schema = z.nativeEnum(StateEnum, {
+const schema = z.enum(Object.values(StateEnum) as [StateEnum, ...StateEnum[]], {
   error: 'UF inválida',
 })
 
