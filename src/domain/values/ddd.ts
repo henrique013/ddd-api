@@ -6,10 +6,10 @@ const MAX_VALUE = 99
 
 const schema = z
   .number()
-  .int('DDD deve ser um número inteiro')
-  .min(MIN_VALUE, `DDD deve ser maior ou igual a ${MIN_VALUE}`)
-  .max(MAX_VALUE, `DDD deve ser menor ou igual a ${MAX_VALUE}`)
-  .refine((value) => value % 10 !== 0, 'DDD não pode ser divisível por 10')
+  .int({ error: 'DDD deve ser um número inteiro' })
+  .min(MIN_VALUE, { error: `DDD deve ser maior ou igual a ${MIN_VALUE}` })
+  .max(MAX_VALUE, { error: `DDD deve ser menor ou igual a ${MAX_VALUE}` })
+  .refine((value) => value % 10 !== 0, { error: 'DDD não pode ser divisível por 10' })
 
 export class DDD extends BaseValue<number> {
   static readonly MIN_VALUE = MIN_VALUE

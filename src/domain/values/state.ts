@@ -32,7 +32,7 @@ export enum StateEnum {
 }
 
 const schema = z.nativeEnum(StateEnum, {
-  errorMap: () => ({ message: 'UF inválida' }),
+  error: 'UF inválida',
 })
 
 export class State extends BaseValue<StateEnum> {

@@ -12,8 +12,8 @@ export abstract class BaseValue<T> {
     try {
       return schema.parse(value)
     } catch (error) {
-      if (error instanceof z.ZodError && error.errors[0]) {
-        throw new BadArgumentError(error.errors[0].message)
+      if (error instanceof z.ZodError && error.issues[0]) {
+        throw new BadArgumentError(error.issues[0].message)
       }
       throw error
     }

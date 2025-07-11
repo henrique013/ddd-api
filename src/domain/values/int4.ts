@@ -11,10 +11,10 @@ const MIN_VALUE = 0
 
 const schema = z
   .number()
-  .int('Valor deve ser um número inteiro')
-  .nonnegative('Valor não pode ser negativo')
-  .min(MIN_VALUE, `Valor deve ser maior ou igual a ${MIN_VALUE}`)
-  .max(MAX_VALUE, `Valor deve ser menor ou igual a ${MAX_VALUE}`)
+  .int({ error: 'Valor deve ser um número inteiro' })
+  .nonnegative({ error: 'Valor não pode ser negativo' })
+  .min(MIN_VALUE, { error: `Valor deve ser maior ou igual a ${MIN_VALUE}` })
+  .max(MAX_VALUE, { error: `Valor deve ser menor ou igual a ${MAX_VALUE}` })
 
 export class Int4 extends BaseValue<number> {
   static readonly MIN_VALUE = MIN_VALUE
