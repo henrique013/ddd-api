@@ -1,6 +1,6 @@
 {
   "name": "ddd-api",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "REST API for querying Brazilian cities by DDD (area code).",
   "author": "Henrique Alves <henrique013.a@gmail.com> (https://github.com/henrique013)",
   "license": "MIT",
